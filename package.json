@@ -4,7 +4,7 @@
   "description": "Getting realtime notifications",
   "main": "dist/notificator.js",
   "scripts": {
-    "build": "webpack --config=webpack/config.web.js",
+    "build": "MINIMIZE=false webpack --config=webpack/config.web.js",
     "dev": "webpack --config=webpack/dev.server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
