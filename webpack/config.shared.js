@@ -5,9 +5,6 @@ module.exports = {
   optimization: {
     minimize: !(process.env.MINIMIZE === 'false')
   },
-  entry: {
-    notificator: './src/notificator.ts'
-  },
   devtool: 'source-map',
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.js'],

@@ -15,6 +15,7 @@ declare type CallbacksType = {
 };
 declare class NotificatorJs {
     apiKey: string;
+    webSocketProtocol: string;
     webSocketHost: string;
     socketInstance: WebSocket;
     channels: ChannelsType;
@@ -22,8 +23,8 @@ declare class NotificatorJs {
     constructor(apiKey: string, callbacks?: CallbacksType);
     connect(): void;
     disconnect(): void;
-    subscribeChannel(channel: string, callback?: ChannelType): void;
-    unsubscribeChannel(channel: string, callback?: ChannelType): void;
+    subscribe(channel: string, callback?: ChannelType): void;
+    unsubscribe(channel: string, callback?: ChannelType): void;
     unsubscribeAllChannels(): void;
     initInstance(): void;
     addEvents(): void;

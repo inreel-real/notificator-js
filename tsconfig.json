@@ -3,7 +3,7 @@
     "sourceMap": true,
     "module": "es6",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationDir": "dist",
     "target": "es3",
     "removeComments": true,
     "moduleResolution": "node",

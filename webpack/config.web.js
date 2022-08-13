@@ -10,12 +10,13 @@ const entry = './src/notificator.ts';
 
 module.exports = merge({}, configShared, {
   entry: {
-    notificator: entry
+    notificator: entry,
   },
   output: {
     filename: filename,
     library: 'Notificator',
     path: path.join(__dirname, '../dist'),
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    globalObject: 'this',
   }
 });
