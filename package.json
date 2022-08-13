@@ -1,0 +1,32 @@
+{
+  "name": "notificator-js",
+  "version": "0.0.1",
+  "description": "Getting realtime notifications",
+  "main": "dist/notificator.js",
+  "scripts": {
+    "build": "webpack --config=webpack/config.web.js",
+    "dev": "webpack --config=webpack/dev.server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inreel-real/notificator-js.git"
+  },
+  "author": "Vadim Karnopelev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inreel-real/notificator-js/issues"
+  },
+  "homepage": "https://github.com/inreel-real/notificator-js#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "source-map-loader": "^4.0.0",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "uglify-js": "^3.16.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "webpack-merge": "^5.8.0"
+  }
+}

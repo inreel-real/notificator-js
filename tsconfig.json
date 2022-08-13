@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "es6",
+    "declaration": true,
+    "declarationDir": "types",
+    "target": "es3",
+    "removeComments": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "*": [
+        "*",
+      ]
+    },
+    "lib": [
+      "ScriptHost",
+      "DOM",
+      "ES5"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
