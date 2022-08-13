@@ -34,21 +34,21 @@ class NotificatorJs {
     };
   }
 
-  connect() {
+  connect = () => {
     this.initInstance();
     this.addEvents();
-  }
+  };
 
-  disconnect() {
+  disconnect = () => {
     if (this.socketInstance) {
       this.socketInstance.close();
       this.removeEvents();
       this.socketInstance = null;
       this.channels = {};
     }
-  }
+  };
 
-  subscribe(channel: string, callback: ChannelType = null) {
+  subscribe = (channel: string, callback: ChannelType = null) => {
     if (callback) {
       if (!this.channels[channel]) {
         this.channels[channel] = [callback];
@@ -58,9 +58,9 @@ class NotificatorJs {
     }
 
     this.socketInstance.send(JSON.stringify({ cmd: 'sub', name: channel }));
-  }
+  };
 
-  unsubscribe(channel: string, callback: ChannelType = null) {
+  unsubscribe = (channel: string, callback: ChannelType = null) => {
     if (!this.channels[channel]) {
       return;
     }
@@ -74,55 +74,55 @@ class NotificatorJs {
       delete this.channels[channel];
       this.socketInstance.send(JSON.stringify({ cmd: 'unsub', name: channel }));
     }
-  }
+  };
 
-  unsubscribeAllChannels() {
+  unsubscribeAllChannels = () => {
     this.channels = {};
     this.socketInstance.send(JSON.stringify({ cmd: 'unsub' }));
-  }
+  };
 
-  initInstance() {
+  initInstance = () => {
     this.socketInstance =
       new WebSocket(`${this.webSocketProtocol}://${this.webSocketHost}/${this.apiKey}`);
-  }
+  };
 
-  addEvents() {
+  addEvents = () => {
     if (this.socketInstance) {
       this.socketInstance.addEventListener('open', this.eventConnected);
       this.socketInstance.addEventListener('close', this.eventDisconnected);
       this.socketInstance.addEventListener('error', this.eventError);
       this.socketInstance.addEventListener('message', this.eventReceiveMessage);
     }
-  }
+  };
 
-  removeEvents() {
+  removeEvents = () => {
     if (this.socketInstance) {
       this.socketInstance.removeEventListener('open', this.eventConnected);
       this.socketInstance.removeEventListener('close', this.eventDisconnected);
       this.socketInstance.removeEventListener('error', this.eventError);
       this.socketInstance.removeEventListener('message', this.eventReceiveMessage);
     }
-  }
+  };
 
-  eventConnected(event: Event) {
+  eventConnected = (event: Event) => {
     if (this.callbacks.onOpened) {
       this.callbacks.onOpened(event);
     }
-  }
+  };
 
-  eventDisconnected(event: CloseEvent) {
+  eventDisconnected = (event: CloseEvent) => {
     if (this.callbacks.onClosed) {
       this.callbacks.onClosed(event);
     }
-  }
+  };
 
-  eventError(event: Event) {
+  eventError = (event: Event) => {
     if (this.callbacks.onError) {
       this.callbacks.onError(event);
     }
-  }
+  };
 
-  eventReceiveMessage(event: MessageEvent) {
+  eventReceiveMessage = (event: MessageEvent) => {
     const result = <ReceiveMessageData>JSON.parse(event.data);
 
     if (this.callbacks.onMessage) {
@@ -136,7 +136,7 @@ class NotificatorJs {
     this.channels[result.channel]?.forEach((callback: ChannelType) => (
       callback(result.data)
     ));
-  }
+  };
 }
 
 export default NotificatorJs;
